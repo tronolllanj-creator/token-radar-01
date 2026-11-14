@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Token Radar: pre-token protocols ranked by implied value</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <a class="skip-link" href="#board">Skip to main content</a>
+    
+    <header>
+        <h1>Token Radar</h1>
+        <p class="subtitle">The board ranks protocols that record no token by implied launch value.</p>
+        <p id="meta-line"></p>
+    </header>
+
+    <section class="controls">
+        <input id="q" type="search" placeholder="Search protocols" aria-label="Search protocols">
+        
+        <select id="cat">
+            <option value="">All categories</option>
+        </select>
+        
+        <select id="chain">
+            <option value="">All chains</option>
+        </select>
+        
+        <select id="sort">
+            <option value="implied">Implied value</option>
+            <option value="tvl">TVL</option>
+            <option value="change7d">7-day change</option>
+            <option value="age">Age</option>
+        </select>
+
+        <label>
+            <input type="checkbox" id="wlOnly">
+            Watchlist only
+        </label>
+
+        <p id="filter-banner" hidden></p>
+    </section>
+
+    <main id="board" aria-busy="true">
+        <!-- Board content populated by app.js -->
+    </main>
+
+    <section id="detail" hidden>
+        <!-- Detail view populated by app.js -->
+    </section>
+
+    <section>
+        <h2>Live tokens already trading</h2>
+        <div id="live"></div>
+    </section>
+
+    <section>
+        <h2>How the value is worked out</h2>
+        <div id="method"></div>
+    </section>
+
+    <section>
+        <h2>Category comparables</h2>
+        <div id="comparables"></div>
+    </section>
+
+    <footer>
+        <p>Disclaimer: Implied values are this entry's own claim from the snapshot. Recording no token is not proof a protocol has no token. Snapshot date: 2026-11-14.</p>
+    </footer>
+
+    <script src="../data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
