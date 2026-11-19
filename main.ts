@@ -1,5 +1,5 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { boardIssue, buildRadar, dataScript, parseSnapshot } from './lib/model.ts';
 import { buildDossier } from './vendor/makefun-board.ts';
@@ -59,6 +59,8 @@ writeFileSync(boardPath, boardContent, 'utf8');
 const dataPath = join(out, 'data.js');
 writeFileSync(dataPath, dataScript(radar), 'utf8');
 
+const scriptDir = dirname(fileURLToPath(import.meta.url));
+
 // Helper to copy files from a source directory
 function copyFiles(srcDir: string, destDir: string): string[] {
   const copied: string[] = [];
@@ -75,8 +77,8 @@ function copyFiles(srcDir: string, destDir: string): string[] {
   return copied;
 }
 
-copyFiles('dashboard', join(out, 'dashboard'));
-const screenshots = copyFiles('screenshots', join(out, 'screenshots'));
+copyFiles(join(scriptDir, 'dashboard'), join(out, 'dashboard'));
+const screenshots = copyFiles(join(scriptDir, 'screenshots'), join(out, 'screenshots'));
 
 // Verify screenshot count
 if (screenshots.length < 3) {
